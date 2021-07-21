@@ -21,7 +21,10 @@
 </template>
 
 <script>
+import httpClient from '@/api/httpClient'
 export default {
+  components: {
+  },
   data() {
     return {
       user: {
@@ -33,9 +36,8 @@ export default {
   },
   methods: {
     signUp() {
-      this.axios
-        .post(
-          'https://trello.backend.tests.nekidaem.ru/api/v1/users/create/',
+      httpClient.post(
+          'api/v1/users/create/',
           {
             username: this.user.username,
             email: this.user.email,

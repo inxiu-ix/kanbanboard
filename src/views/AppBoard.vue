@@ -34,18 +34,10 @@ export default {
 
 <style scoped>
 .boardholder {
+  box-sizing: border-box;
   padding: 50px 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-.boardholder__row {
-  width: 300px;
-  min-height: 750px;
-  border: 1px solid grey;
-}
-
-.title {
-  height: 50px;
 }
 </style>
