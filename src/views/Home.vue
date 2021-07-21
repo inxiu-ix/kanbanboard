@@ -13,12 +13,14 @@
       <p class="auth-text">
         Чтобы продолжить зарегистрируйте профиль, или войдите в существующий.
       </p>
-      <router-link to="/auth">
+      <div class="auth-btn-container">
+        <router-link to="/auth">
         <button class="auth-btn">Войти</button>
       </router-link>
       <router-link to="/registration">
         <button class="auth-btn">Регистрация</button>
       </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -62,5 +64,32 @@
 .auth-btn:hover {
   cursor: pointer;
   background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .auth-container {
+    font-size: 25px;
+    padding: 40px 50px;
+  }
+}
+
+@media (max-width: 576px) {
+  .auth-container {
+    font-size: 17px;
+    padding: 20px 30px
+  }
+  .auth-text {
+  font-size: 10px;
+}
+.auth-btn {
+  padding: 9px 30px;
+  margin-right: 20px;
+  margin-top: 0;
+}
+.auth-btn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 }
 </style>
