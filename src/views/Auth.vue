@@ -123,4 +123,10 @@ export default {
   background: rgba(255, 255, 255, 0.2);
 }
 
+@media (max-width: 576px) {
+  .auth-form__input {
+    min-width: 200px
+  }
+}
+
 </style>
