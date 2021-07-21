@@ -169,7 +169,47 @@ export default {
   .boardholder__row {
   box-sizing: border-box;
   min-width: 250px;
-  min-height: 750px;
+  min-height: 500px;
+}
+.input-add {
+  width: 185px;
+  min-width: 185px;
+  max-width: 185px;
 }
 }
+
+@media (max-width: 576px) { 
+   .boardholder__row {
+  box-sizing: border-box;
+  min-width: 180px;
+  min-height: 400px;
+}
+.input-add {
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+}
+.add-card-btn {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #2b2d33;
+  border: 0;
+  text-align: start;
+  font-size: 10px;
+  color: #b0b1b2;
+  transition: all 0.5s ease-out;
+}
+
+.input-add-btn {
+  padding: 7px;
+  margin-right: 5px;
+  font-size: 10px;
+  color: #b0b1b2;
+  border: 1px solid #2a3744;
+  border-radius: 10px;
+  transition: all 0.5s ease-out;
+}
+ }
 </style>
