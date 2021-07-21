@@ -45,8 +45,7 @@ export default {
           },
           { headers: { 'Content-type': 'application/json' } }
         )
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           this.$router.push('/auth')
         })
         .catch((error) => {

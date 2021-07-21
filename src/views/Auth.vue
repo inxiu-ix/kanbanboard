@@ -38,7 +38,6 @@ export default {
           }
         )
         .then((response) => {
-          console.log(response);
           this.setLogined(response.data.token)
         }).then(() => {
           this.$router.push('/board')
@@ -48,7 +47,6 @@ export default {
         });
     },
     setLogined(token) {
-      console.log(token);
       localStorage.setItem('token', token)
     }
   },

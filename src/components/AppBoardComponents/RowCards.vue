@@ -1,27 +1,29 @@
 <template>
-  <div class="boardholder__row">
-    <div :class="type" class="title">
-      {{ `${type} (${totalCard})` }}
-    </div>
-    <draggable :list="row" group="cards" class="list-group">
-      <Card v-for="card in row" :key="card.id" :card="card" />
-    </draggable>
-    <div class="input-add-container">
-      <textarea class="input-add" v-if="visible" v-model="text"></textarea>
-      <p class="input-add-btn-container" v-if="visible">
-        <button class="input-add-btn" @click="() => addCard(type)">
-          Добавить
-        </button>
-        <button class="input-add-btn" @click="toggleVisibleInput">
-          Отмена
-        </button>
-      </p>
+  
+    <div class="boardholder__row">
+      <div :class="type" class="title">
+        {{ `${type} (${totalCard})` }}
+      </div>
+        <draggable class="dragholder list-group" :list="row"  @change="(event) => checkMove(event, type)" group="cards">
+        <Card v-for="card in row" :key="card.id" :card="card" />
+          </draggable>
+      <div class="input-add-container">
+        <textarea class="input-add" v-if="visible" v-model="text"></textarea>
+        <p class="input-add-btn-container" v-if="visible">
+          <button class="input-add-btn" @click="() => addCard(type)">
+            Добавить
+          </button>
+          <button class="input-add-btn" @click="toggleVisibleInput">
+            Отмена
+          </button>
+        </p>
+      </div>
+
+      <button v-if="!visible" class="add-card-btn" @click="toggleVisibleInput">
+        Добавить карточку
+      </button>
     </div>
 
-    <button v-if="!visible" class="add-card-btn" @click="toggleVisibleInput">
-      Добавить карточку
-    </button>
-  </div>
 </template>
 
 <script>
@@ -48,7 +50,8 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['addCardAction']),
+    ...mapActions(['addCardAction', 'updateCard']),
+
 
     addCard(type) {
       this.toggleVisibleInput();
@@ -71,11 +74,20 @@ export default {
     validateInputValue() {
       return !!this.text.trim().length;
     },
+    checkMove(event, type) {
+      
+      if(event.added) {
+      const card = event.added.element;
+      this.updateCard({card, type})
+      }
+    },
   },
 };
 </script>
 
-<style>
+<style >
+
+
 .title {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -167,49 +179,49 @@ export default {
 
 @media (max-width: 768px) {
   .boardholder__row {
-  box-sizing: border-box;
-  min-width: 250px;
-  min-height: 500px;
-}
-.input-add {
-  width: 185px;
-  min-width: 185px;
-  max-width: 185px;
-}
-}
-
-@media (max-width: 576px) { 
-   .boardholder__row {
-  box-sizing: border-box;
-  min-width: 180px;
-  min-height: 400px;
-}
-.input-add {
-  width: 120px;
-  min-width: 120px;
-  max-width: 120px;
-}
-.add-card-btn {
-  box-sizing: border-box;
-  display: block;
-  width: 100%;
-  padding: 10px 15px;
-  background-color: #2b2d33;
-  border: 0;
-  text-align: start;
-  font-size: 10px;
-  color: #b0b1b2;
-  transition: all 0.5s ease-out;
+    box-sizing: border-box;
+    min-width: 250px;
+    min-height: 500px;
+  }
+  .input-add {
+    width: 185px;
+    min-width: 185px;
+    max-width: 185px;
+  }
 }
 
-.input-add-btn {
-  padding: 7px;
-  margin-right: 5px;
-  font-size: 10px;
-  color: #b0b1b2;
-  border: 1px solid #2a3744;
-  border-radius: 10px;
-  transition: all 0.5s ease-out;
+@media (max-width: 576px) {
+  .boardholder__row {
+    box-sizing: border-box;
+    min-width: 180px;
+    min-height: 400px;
+  }
+  .input-add {
+    width: 120px;
+    min-width: 120px;
+    max-width: 120px;
+  }
+  .add-card-btn {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #2b2d33;
+    border: 0;
+    text-align: start;
+    font-size: 10px;
+    color: #b0b1b2;
+    transition: all 0.5s ease-out;
+  }
+
+  .input-add-btn {
+    padding: 7px;
+    margin-right: 5px;
+    font-size: 10px;
+    color: #b0b1b2;
+    border: 1px solid #2a3744;
+    border-radius: 10px;
+    transition: all 0.5s ease-out;
+  }
 }
- }
 </style>

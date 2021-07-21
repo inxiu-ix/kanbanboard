@@ -1,11 +1,13 @@
 <template>
   <div class="cardholder">
+    <button @click="() => delCard(card)" class="cardholder__remove-btn"> x </button>
     <p class="cardholder__id">id: {{cardSeqNum}}</p>
     <p class="cardholder__text">{{ card.text }}</p>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: 'Card',
   props: ['card'],
@@ -14,11 +16,17 @@ export default {
       return this.card.seq_num
     }
   },
+  methods: {
+    ...mapActions(['removeCard']),
+    delCard(card) {
+      this.removeCard(card)
+    },
+  }
   
 };
 </script>
 
-<style>
+<style >
 .cardholder__id {
   text-align: start;
   font-size: 13px;
@@ -32,6 +40,7 @@ export default {
   color: #bfb8b2;
 }
 .cardholder {
+  position: relative;
   box-sizing: border-box;
   margin: 0;
   padding: 10px 15px;
@@ -39,6 +48,23 @@ export default {
   min-height: 100px;
   background-color: #191a1d;
   transition: all 0.5s ease-out;
+}
+
+.cardholder__remove-btn {
+  background-color: #2b2d33;
+  padding: 5px 10px;
+  font-weight: bold;
+  color: #b0b1b2;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: all 0.5s ease-out;
+}
+
+.cardholder__remove-btn:hover {
+  cursor: pointer;
+  background-color: rgba(104, 4, 4, 0.8);
 }
 
 .cardholder:hover {
