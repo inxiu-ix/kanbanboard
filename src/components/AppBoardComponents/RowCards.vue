@@ -119,6 +119,7 @@ export default {
   color: #b0b1b2;
   border: 2px solid #2a3744;
   border-radius: 10px;
+  transition: all 0.5s ease-out;
 }
 
 .input-add-btn:hover {
@@ -138,11 +139,12 @@ export default {
   min-width: 233px;
   max-width: 233px;
   margin-top: 10px;
+  transition: background-color 0.5s ease-out;
 }
 
 .input-add:focus {
   outline: none;
-  border: 2px solid #3a4d60
+  border: 2px solid #3a4d60;
 }
 
 .add-card-btn {
@@ -155,6 +157,7 @@ export default {
   text-align: start;
   font-size: 15px;
   color: #b0b1b2;
+  transition: all 0.5s ease-out;
 }
 
 .add-card-btn:hover {

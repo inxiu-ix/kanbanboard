@@ -38,6 +38,7 @@ export default {
   margin: 10px 10px;
   min-height: 100px;
   background-color: #191a1d;
+  transition: all 0.5s ease-out;
 }
 
 .cardholder:hover {

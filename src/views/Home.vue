@@ -56,6 +56,7 @@
   background: linear-gradient(-20deg,#ff8c46, #fd6a77 );
   border: 1px solid black;
   border-radius: 20px;
+  transition: background-color 0.5s ease-out;
 }
 
 .auth-btn:hover {
