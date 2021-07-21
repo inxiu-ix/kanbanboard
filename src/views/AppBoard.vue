@@ -40,4 +40,11 @@ export default {
   flex-direction: row;
   justify-content: space-between;
 }
+
+@media (max-width: 768px) {
+  .boardholder {
+    padding: 0;
+    max-width: 768;
+  }
+}
 </style>
