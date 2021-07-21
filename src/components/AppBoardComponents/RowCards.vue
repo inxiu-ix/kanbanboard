@@ -164,4 +164,12 @@ export default {
   cursor: pointer;
   background-color: rgba(122, 122, 122, 0.2);
 }
+
+@media (max-width: 768px) {
+  .boardholder__row {
+  box-sizing: border-box;
+  min-width: 250px;
+  min-height: 750px;
+}
+}
 </style>
