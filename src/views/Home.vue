@@ -80,6 +80,7 @@
   }
   .auth-text {
   font-size: 10px;
+  font-weight: bold;
 }
 .auth-btn {
   padding: 9px 30px;

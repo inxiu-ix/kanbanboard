@@ -118,4 +118,10 @@ export default {
   cursor: pointer;
   background: rgba(255, 255, 255, 0.2);
 }
+
+@media (max-width: 576px) {
+  .registration-form__input {
+    min-width: 200px
+  }
+}
 </style>
