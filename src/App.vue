@@ -5,37 +5,20 @@
 </template>
 
 <script>
-export default 
-
-{
+export default {
   name: 'App',
   components: {},
-  async created() {
-   
-  }
+  async created() {},
 };
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  min-width: 1200px;
+  display: flex;
   height: 100%;
-  
-}
-@media (max-width: 768px) {
-  #app {
-    min-width: 768px;
-  }
-}
-
-@media (max-width: 576px) {
-  #app {
-    min-width: 320px;
-  }
+  position: relative;
+  z-index: 1;
+  font-family: 'Oswald', sans-serif;
+  background-color: #35383f;
 }
 </style>

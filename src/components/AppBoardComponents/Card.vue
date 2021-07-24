@@ -32,43 +32,31 @@ export default {
 </script>
 
 <style>
-.cardholder__id {
-  text-align: start;
-  font-size: 13px;
-  color: white;
-}
-.cardholder__text {
-  font-size: 14px;
-  text-align: start;
-  margin-right: 5px;
-  padding: 0;
-  margin: 0;
-  color: #bfb8b2;
+/* 
+
+
+
+
+
+
+
+
+
+
+
+
+.cardholder__remove-btn:hover {
+  cursor: pointer;
+  background-color: rgba(104, 4, 4, 0.8);
 }
 
-.cardholder__button-container {
-  height: 20px;
-}
-
-.cardholder__text-container {
- word-wrap: break-word;
-  overflow: auto;
-  padding: 0 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #1b1c1f;
-  border: 1px solid #8e8e8e;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar {
-  border-radius: 5px;
-  background-color: #35383f;
-  width: 12px;
-}
+.cardholder:hover {
+  cursor: pointer;
+  background-color: rgba(122, 122, 122, 0.2);
+} */
 
 .cardholder {
+  white-space: normal;
   position: relative;
   box-sizing: border-box;
   margin: 0;
@@ -91,19 +79,31 @@ export default {
   transition: all 0.5s ease-out;
 }
 
-.cardholder__remove-btn:hover {
-  cursor: pointer;
-  background-color: rgba(104, 4, 4, 0.8);
+.cardholder__id {
+  text-align: start;
+  font-size: 13px;
+  color: white;
+  margin: 0;
+  width: 100%;
 }
 
-.cardholder:hover {
-  cursor: pointer;
-  background-color: rgba(122, 122, 122, 0.2);
+.cardholder__text {
+  font-size: 14px;
+  text-align: start;
+  margin-right: 5px;
+  padding: 0;
+  margin: 0;
+  color: #bfb8b2;
+  word-wrap: break-word;
+  overflow: auto;
 }
 
-@media (max-width: 768px) {
-  ::-webkit-scrollbar {
-  width: 8px;
+.cardholder__button-container {
+  height: 20px;
 }
+
+.cardholder__text-container {
+ word-wrap: break-word;
+  padding: 0 5px;
 }
 </style>
