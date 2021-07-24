@@ -198,6 +198,11 @@ export default {
     min-width: 140px;
     max-width: 140px;
   }
+
+  .boardholder__content {
+  height: calc(100vh - 50px);
+  overflow: auto;
+}
 }
 
 @media (max-width: 576px) {
