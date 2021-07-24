@@ -92,34 +92,6 @@ export default {
 </script>
 
 <style>
-/* 
-
-
-
-
-
-
-
-
-
-.input-add-btn:hover {
-  cursor: pointer;
-  background-color: rgba(122, 122, 122, 0.2);
-}
-
-
-
-.input-add:focus {
-  outline: none;
-  border: 2px solid #3a4d60;
-}
-
-
-
-.add-card-btn:hover {
-  cursor: pointer;
-  background-color: rgba(122, 122, 122, 0.2);
-} */
 
 .boardholder__column {
   width: 272px;
@@ -161,7 +133,7 @@ export default {
 ::-webkit-scrollbar {
   border-radius: 5px;
   background-color: #35383f;
-  width: 5px;
+  width: 8px;
 }
 
 .title {
@@ -219,6 +191,36 @@ export default {
   border: 2px solid #2a3744;
   border-radius: 10px;
   transition: all 0.5s ease-out;
+}
+
+
+@media(min-width: 1200px) {
+.input-add-btn:hover {
+  cursor: pointer;
+  background-color: rgba(122, 122, 122, 0.2);
+}
+
+
+
+.input-add:focus {
+  outline: none;
+  border: 2px solid #3a4d60;
+}
+
+
+
+.add-card-btn:hover {
+  cursor: pointer;
+  background-color: rgba(122, 122, 122, 0.2);
+} 
+
+.boardholder__column {
+  margin: 0 55px;
+}
+.board-container {
+  padding-top: 30px;
+}
+
 }
 
 </style>

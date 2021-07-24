@@ -32,28 +32,6 @@ export default {
 </script>
 
 <style>
-/* 
-
-
-
-
-
-
-
-
-
-
-
-
-.cardholder__remove-btn:hover {
-  cursor: pointer;
-  background-color: rgba(104, 4, 4, 0.8);
-}
-
-.cardholder:hover {
-  cursor: pointer;
-  background-color: rgba(122, 122, 122, 0.2);
-} */
 
 .cardholder {
   white-space: normal;
@@ -105,5 +83,17 @@ export default {
 .cardholder__text-container {
  word-wrap: break-word;
   padding: 0 5px;
+}
+
+@media(min-width: 1200px) {
+  .cardholder__remove-btn:hover {
+  cursor: pointer;
+  background-color: rgba(104, 4, 4, 0.8);
+}
+
+.cardholder:hover {
+  cursor: pointer;
+  background-color: rgba(122, 122, 122, 0.2);
+} 
 }
 </style>
