@@ -55,7 +55,6 @@
 
 .auth-btn-container {
   margin-top: 30px;
-  display: flex;
 }
 
 @media (min-width: 768px) {
