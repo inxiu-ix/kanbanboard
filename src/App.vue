@@ -24,6 +24,7 @@ export default
   text-align: center;
   color: #2c3e50;
   min-width: 1200px;
+  height: 100%;
   
 }
 @media (max-width: 768px) {

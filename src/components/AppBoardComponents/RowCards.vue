@@ -1,29 +1,35 @@
 <template>
-  
-    <div class="boardholder__row">
-      <div :class="type" class="title">
-        {{ `${type} (${totalCard})` }}
-      </div>
-        <draggable class="dragholder list-group" :list="row"  @change="(event) => checkMove(event, type)" group="cards">
-        <Card v-for="card in row" :key="card.id" :card="card" />
-          </draggable>
-      <div class="input-add-container">
-        <textarea class="input-add" v-if="visible" v-model="text"></textarea>
-        <p class="input-add-btn-container" v-if="visible">
-          <button class="input-add-btn" @click="() => addCard(type)">
-            Добавить
-          </button>
-          <button class="input-add-btn" @click="toggleVisibleInput">
-            Отмена
-          </button>
-        </p>
-      </div>
-
-      <button v-if="!visible" class="add-card-btn" @click="toggleVisibleInput">
-        Добавить карточку
-      </button>
+<div class="board-container">
+  <div class="boardholder__row">
+    <div :class="type" class="title">
+      {{ `${type} (${totalCard})` }}
     </div>
-
+    <div class="boardholder__content">
+      <draggable
+      class="dragholder list-group"
+      :list="row"
+      @change="(event) => checkMove(event, type)"
+      group="cards"
+    >
+      <Card v-for="card in row" :key="card.id" :card="card" />
+    </draggable>
+    <div class="input-add-container">
+      <textarea class="input-add" v-if="visible" v-model="text"></textarea>
+      <p class="input-add-btn-container" v-if="visible">
+        <button class="input-add-btn" @click="() => addCard(type)">
+          Добавить
+        </button>
+        <button class="input-add-btn" @click="toggleVisibleInput">
+          Отмена
+        </button>
+      </p>
+      <button v-if="!visible" class="add-card-btn" @click="toggleVisibleInput">
+      Добавить карточку
+    </button>
+    </div>
+    </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -52,7 +58,6 @@ export default {
   methods: {
     ...mapActions(['addCardAction', 'updateCard']),
 
-
     addCard(type) {
       this.toggleVisibleInput();
       const data = {
@@ -75,19 +80,16 @@ export default {
       return !!this.text.trim().length;
     },
     checkMove(event, type) {
-      
-      if(event.added) {
-      const card = event.added.element;
-      this.updateCard({card, type})
+      if (event.added) {
+        const card = event.added.element;
+        this.updateCard({ card, type });
       }
     },
   },
 };
 </script>
 
-<style >
-
-
+<style>
 .title {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -111,11 +113,20 @@ export default {
   background-color: #2ad141;
 }
 
+.board-container {
+  height: 100%;
+}
+
 .boardholder__row {
   background-color: #2b2d33;
   box-sizing: border-box;
   width: 300px;
-  min-height: 750px;
+  max-height: 100%;
+}
+
+.boardholder__content {
+  height: calc(100vh - 150px);
+  overflow: auto;
 }
 
 .input-add-btn-container {
@@ -180,13 +191,12 @@ export default {
 @media (max-width: 768px) {
   .boardholder__row {
     box-sizing: border-box;
-    min-width: 250px;
-    min-height: 500px;
+    min-width: 200px;
   }
   .input-add {
-    width: 185px;
-    min-width: 185px;
-    max-width: 185px;
+    width: 140px;
+    min-width: 140px;
+    max-width: 140px;
   }
 }
 
@@ -194,7 +204,6 @@ export default {
   .boardholder__row {
     box-sizing: border-box;
     min-width: 180px;
-    min-height: 400px;
   }
   .input-add {
     width: 120px;
