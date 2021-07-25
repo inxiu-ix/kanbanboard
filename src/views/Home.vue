@@ -28,7 +28,6 @@
 <script></script>
 
 <style>
-
 .auth-container {
   text-align: center;
   background-image: url('../assets/5d37b4b4335b7500992213.png');
@@ -72,11 +71,11 @@
     padding: 17px 40px;
   }
 
-@media (min-width: 1200px) {
-  .auth-btn:hover {
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.2);
-} 
-}
+  @media (min-width: 1200px) {
+    .auth-btn:hover {
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
 }
 </style>

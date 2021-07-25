@@ -1,9 +1,9 @@
 <template>
   <div class="cardholder">
     <div class="cardholder__button-container">
-    <button @click="() => delCard(card)" class="cardholder__remove-btn">
-      x
-    </button>
+      <button @click="() => delCard(card)" class="cardholder__remove-btn">
+        x
+      </button>
     </div>
     <div class="cardholder__text-container">
       <p class="cardholder__id">id: {{ cardSeqNum }}</p>
@@ -32,7 +32,6 @@ export default {
 </script>
 
 <style>
-
 .cardholder {
   white-space: normal;
   position: relative;
@@ -81,19 +80,19 @@ export default {
 }
 
 .cardholder__text-container {
- word-wrap: break-word;
+  word-wrap: break-word;
   padding: 0 5px;
 }
 
-@media(min-width: 1200px) {
+@media (min-width: 1200px) {
   .cardholder__remove-btn:hover {
-  cursor: pointer;
-  background-color: rgba(104, 4, 4, 0.8);
-}
+    cursor: pointer;
+    background-color: rgba(104, 4, 4, 0.8);
+  }
 
-.cardholder:hover {
-  cursor: pointer;
-  background-color: rgba(122, 122, 122, 0.2);
-} 
+  .cardholder:hover {
+    cursor: pointer;
+    background-color: rgba(122, 122, 122, 0.2);
+  }
 }
 </style>

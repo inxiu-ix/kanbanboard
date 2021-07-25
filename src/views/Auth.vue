@@ -2,52 +2,98 @@
   <div class="auth-container">
     <div class="form-container">
       <form class="auth-form" @submit.prevent="signIn">
-      <h1 class="auth-form__title">Авторизация</h1>
-      <p class="auth-form__item">
-        <label for="login">Логин: </label>
-        <input
-          class="auth-form__input"
-          id="login"
-          type="text"
-          v-model="user.username"
-        />
-      </p>
-      <p class="auth-form__item">
-        <label for="password">Пароль: </label>
-        <input
-          class="auth-form__input"
-          id="password"
-          type="password"
-          v-model="user.password"
-        />
-      </p>
-      <button class="auth-form__btn" type="submit">Войти</button>
-    </form>
-    <router-link class="registration-text" to="/registration">
-      <p class="registration-text">Нет аккаунта? Зарегистрируйтесь.</p>
-    </router-link>
+        <h1 class="auth-form__title">Авторизация</h1>
+        <p class="auth-form__item">
+          <label for="login">Логин: </label>
+          <input
+            class="auth-form__input"
+            id="login"
+            type="text"
+            v-model.trim="username"
+            :class="{
+              invalid:
+                ($v.username.$dirty && !$v.username.required) ||
+                ($v.username.$dirty && !$v.username.minLength),
+            }"
+          />
+          <small
+            class="helper-text invalid"
+            v-if="$v.username.$dirty && !$v.username.required"
+            >Поле «Логин» не должно быть пустым</small
+          >
+          <small
+            class="helper-text invalid"
+            v-else-if="$v.username.$dirty && !$v.username.minLength"
+            >Логин должен быть не менее
+            {{ $v.username.$params.minLength.min }} символов</small
+          >
+          <small class="helper-text invalid" v-if="errors"
+            >Неверный логин или пароль</small
+          >
+        </p>
+        <p class="auth-form__item">
+          <label for="password">Пароль: </label>
+          <input
+            class="auth-form__input"
+            id="password"
+            type="password"
+            v-model.trim="password"
+            :class="{
+              invalid:
+                ($v.password.$dirty && !$v.password.required) ||
+                ($v.password.$dirty && !$v.password.minLength),
+            }"
+          />
+          <small
+            class="helper-text invalid"
+            v-if="$v.password.$dirty && !$v.password.required"
+            >Поле «Пароль» не должно быть пустым</small
+          >
+          <small
+            class="helper-text invalid"
+            v-else-if="$v.password.$dirty && !$v.password.minLength"
+            >Пароль должен быть не менее
+            {{ $v.password.$params.minLength.min }} символов</small
+          >
+        </p>
+        <button class="auth-form__btn" type="submit">Войти</button>
+      </form>
+      <router-link class="registration-text" to="/registration">
+        <p class="registration-text">Нет аккаунта? Зарегистрируйтесь.</p>
+      </router-link>
     </div>
-    
   </div>
 </template>
 
 <script>
 import httpClient from '@/api/httpClient';
+import { required, minLength } from 'vuelidate/lib/validators';
+
 export default {
-  data() {
+  data: () => {
     return {
-      user: {
-        username: '',
-        password: '',
-      },
+      username: '',
+      password: '',
+      errors: false,
     };
+  },
+  validations: {
+    username: { required, minLength: minLength(4) },
+    password: { required, minLength: minLength(6) },
   },
   methods: {
     signIn() {
+      console.log(this.errors);
+      if (this.$v.$invalid) {
+        this.errors = !this.errors;
+        this.$v.$touch();
+        console.log(this.$v);
+        return;
+      }
       httpClient
         .post('api/v1/users/login/', {
-          username: this.user.username,
-          password: this.user.password,
+          username: this.username,
+          password: this.password,
         })
         .then((response) => {
           this.setLogined(response.data.token);
@@ -56,7 +102,9 @@ export default {
           this.$router.push('/board');
         })
         .catch((error) => {
-          console.log(error);
+          if(error.request.responseText === '{"non_field_errors":["Unable to log in with provided credentials."]}') {
+            this.errors = true
+          }
         });
     },
     setLogined(token) {
@@ -66,9 +114,11 @@ export default {
 };
 </script>
 
-<style>
-
-  .auth-container {
+<style scoped>
+#app {
+  height: auto;
+}
+.auth-container {
   background-image: url('../assets/5d37b4b4335b7500992213.png');
   background-size: cover;
   display: flex;
@@ -130,12 +180,17 @@ export default {
   border: 1px solid white;
 }
 
-
-
 .auth-form__btn:hover {
   cursor: pointer;
   background: rgba(255, 255, 255, 0.2);
 }
 
+.invalid {
+  border: 1px solid red;
+}
 
+.helper-text {
+  border: none;
+  color: red;
+}
 </style>

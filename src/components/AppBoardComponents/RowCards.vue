@@ -1,5 +1,5 @@
 <template>
-  <div class="boardholder__column">
+   <div class="boardholder__column">
     <div :class="type" class="title">
       {{ `${type} (${totalCard})` }}
     </div>
@@ -61,6 +61,7 @@ export default {
     ...mapActions(['addCardAction', 'updateCard']),
 
     addCard(type) {
+      console.log('drag >>>', draggable);
       this.toggleVisibleInput();
       const data = {
         text: this.text,
@@ -92,7 +93,6 @@ export default {
 </script>
 
 <style>
-
 .boardholder__column {
   width: 272px;
   margin: 0 4px;
@@ -123,8 +123,7 @@ export default {
   transition: all 0.5s ease-out;
 }
 
-
- ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: #1b1c1f;
   border: 1px solid #8e8e8e;
   border-radius: 5px;
@@ -193,34 +192,27 @@ export default {
   transition: all 0.5s ease-out;
 }
 
+@media (min-width: 1200px) {
+  .input-add-btn:hover {
+    cursor: pointer;
+    background-color: rgba(122, 122, 122, 0.2);
+  }
 
-@media(min-width: 1200px) {
-.input-add-btn:hover {
-  cursor: pointer;
-  background-color: rgba(122, 122, 122, 0.2);
+  .input-add:focus {
+    outline: none;
+    border: 2px solid #3a4d60;
+  }
+
+  .add-card-btn:hover {
+    cursor: pointer;
+    background-color: rgba(122, 122, 122, 0.2);
+  }
+
+  .boardholder__column {
+    margin: 0 55px;
+  }
+  .board-container {
+    padding-top: 30px;
+  }
 }
-
-
-
-.input-add:focus {
-  outline: none;
-  border: 2px solid #3a4d60;
-}
-
-
-
-.add-card-btn:hover {
-  cursor: pointer;
-  background-color: rgba(122, 122, 122, 0.2);
-} 
-
-.boardholder__column {
-  margin: 0 55px;
-}
-.board-container {
-  padding-top: 30px;
-}
-
-}
-
 </style>
