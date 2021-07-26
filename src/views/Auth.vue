@@ -1,6 +1,7 @@
 <template>
   <div class="auth-container">
-    <div class="form-container">
+    <div class="auth-content">
+      <div class="form-container">
       <form class="auth-form" @submit.prevent="signIn">
         <h1 class="auth-form__title">Авторизация</h1>
         <p class="auth-form__item">
@@ -62,6 +63,8 @@
         <p class="registration-text">Нет аккаунта? Зарегистрируйтесь.</p>
       </router-link>
     </div>
+    </div>
+    
   </div>
 </template>
 
@@ -125,6 +128,13 @@ export default {
   justify-content: center;
   font-family: 'Oswald', sans-serif;
   color: white;
+  flex-grow: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.auth-content {
+  height: 100%;
   flex-grow: 1;
 }
 
